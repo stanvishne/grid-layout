@@ -35,6 +35,18 @@
 .layout-element {
   border: 1px solid black;
   border-style: dashed;
+  overflow: scroll;
+}
+
+.layout-example {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  
+}
+.layout-example:hover {
+  background-color: cornsilk;
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

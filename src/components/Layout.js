@@ -1,15 +1,15 @@
 import React from "react";
 import RGL, { WidthProvider } from "react-grid-layout";
-import ComponentsStore from "./ComponentsStore";
-import { mapper } from "./ComponentsStore";
+import ComponentsStore from "./componentsStore/ComponentsStore";
+import { mapper } from "./componentsStore/componentsMapper";
 const GridLayout = WidthProvider(RGL);
 
 let layout = [
   { i: "a", x: 0, y: 0, w: 2, h: 2, static: true },
-  { i: "b", x: 2, y: 0, w: 6, h: 2 },
+  { i: "b", x: 2, y: 0, w: 6, h: 2, static: true },
   { i: "c", x: 8, y: 0, w: 4, h: 2, static: true }
 ];
-let globalLayout = [
+let pageLayout = [
   { i: "p", x: 0, y: 0, w: 2, h: 10, static: true },
   { i: "l", x: 2, y: 0, w: 10, h: 10, static: true }
 ];
@@ -37,14 +37,11 @@ class Layout extends React.Component {
     this.setState({
       arr: ar
     });
-
-    // Do something with the data
-    // console.log(data);
   }
 
   render() {
     return (
-      <GridLayout layout={globalLayout} cols={12} rowHeight={60}>
+      <GridLayout layout={pageLayout} cols={12} rowHeight={60}>
         <div key="p" className="vertical-panel">
           componets store
           <ComponentsStore />
