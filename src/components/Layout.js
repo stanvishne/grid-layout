@@ -1,18 +1,20 @@
 import React from "react";
+import { connect } from "react-redux";
 import RGL, { WidthProvider } from "react-grid-layout";
 import ComponentsStore from "./componentsStore/ComponentsStore";
 import { mapper } from "./componentsStore/componentsMapper";
+
 const GridLayout = WidthProvider(RGL);
 
-let layout = [
-  { i: "a", x: 0, y: 0, w: 2, h: 2, static: true },
-  { i: "b", x: 2, y: 0, w: 6, h: 2, static: true },
-  { i: "c", x: 8, y: 0, w: 4, h: 2, static: true }
-];
 let pageLayout = [
   { i: "p", x: 0, y: 0, w: 2, h: 10, static: true },
   { i: "l", x: 2, y: 0, w: 10, h: 10, static: true }
 ];
+
+function mapStateToProps({ layout }) {
+  return { layout };
+}
+
 class Layout extends React.Component {
   state = {
     DropedElement: null,
@@ -40,6 +42,7 @@ class Layout extends React.Component {
   }
 
   render() {
+    const { layout } = this.props;
     return (
       <GridLayout layout={pageLayout} cols={12} rowHeight={60}>
         <div key="p" className="vertical-panel">
@@ -73,4 +76,7 @@ class Layout extends React.Component {
   }
 }
 
-export default Layout;
+export default connect(
+  mapStateToProps,
+  null
+)(Layout);
