@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import RGL, { WidthProvider } from "react-grid-layout";
 import ComponentsStore from "./componentsStore/ComponentsStore";
 import { mapper } from "./componentsStore/componentsMapper";
+import { layouts } from "./layoutsConstants";
 
 const GridLayout = WidthProvider(RGL);
 
@@ -45,7 +46,9 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { layout } = this.props;
+    const { match } = this.props;
+    const layoutId = match.params.id;
+    const layout = layouts[layoutId];
     return (
       <GridLayout layout={pageLayout} cols={12} rowHeight={60}>
         <div key="p" className="vertical-panel">

@@ -36,7 +36,7 @@ class LayoutSelector extends React.Component {
       >
         {pageLayout.map((layout, i) => (
           <div
-            onClick={() => onClick(layouts[i])}
+            onClick={() => onClick(layouts[i], i)}
             style={style}
             className="layout-demo-div"
             key={layout.i}

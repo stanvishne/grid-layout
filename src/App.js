@@ -28,7 +28,7 @@ class App extends Component {
             </header>
             <div className="App-main">
               <Route exact path="/" component={Home} />
-              <Route exact path="/layout" component={Layout} />
+              <Route exact path="/layout/:id" component={Layout} />
             </div>
           </div>
         </BrowserRouter>
