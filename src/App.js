@@ -4,6 +4,8 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./rootReducers";
 import Home from "./components/Home";
+// import Home from "./LayoutSelector";
+
 import Layout from "./components/Layout";
 import logo from "./logo.svg";
 import "../node_modules/react-grid-layout/css/styles.css";

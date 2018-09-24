@@ -2,7 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { layouts } from "./layoutsConstants";
-import LayoutPreview from "./LayoutPreview";
+//import LayoutPreview from "./LayoutPreview";
+import LayoutSelector from "../LayoutSelector";
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -11,22 +12,21 @@ function mapDispatchToProps(dispatch) {
 }
 
 class Home extends React.Component {
-  handleClick(layout) {
-    console.log(layout);
+  handleClick = layout => {
     this.props.onLayouSelect(layout);
     this.props.history.push("/layout");
-  }
+  };
   render() {
     return (
       <div>
-        Home
-        {layouts.map((layout, i) => (
+        {/*layouts.map((layout, i) => (
           <LayoutPreview
             key={`ly-${i}`}
             onClick={() => this.handleClick(layout)}
             layout={layout}
           />
-        ))}
+        ))*/}
+        <LayoutSelector layouts={layouts} onClick={this.handleClick} />
       </div>
     );
   }

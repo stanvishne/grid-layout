@@ -17,7 +17,6 @@ function mapStateToProps({ layout }) {
 
 class Layout extends React.Component {
   state = {
-    DropedElement: null,
     arr: []
   };
   onLayoutChange = layout => {
@@ -29,10 +28,14 @@ class Layout extends React.Component {
     e.stopPropagation();
     e.preventDefault();
   };
-
+  deleteComponent(index) {
+    const prevArr = this.state.arr;
+    prevArr[index] = null;
+    this.setState({ arr: prevArr });
+  }
   onDrop(e, gridIndex) {
     const name = e.dataTransfer.getData("text");
-    console.log(name);
+
     const Comp = mapper[name];
     const ar = this.state.arr;
     ar[gridIndex] = <Comp />;
@@ -55,7 +58,7 @@ class Layout extends React.Component {
             onLayoutChange={this.onLayoutChange}
             layout={layout}
             cols={12}
-            rowHeight={60}
+            rowHeight={30}
           >
             {layout.map(item => (
               <div
@@ -67,6 +70,15 @@ class Layout extends React.Component {
                 key={item.i}
               >
                 {this.state.arr[item.i]}
+                {this.state.arr[item.i] && (
+                  <di
+                    onClick={() => this.deleteComponent(item.i)}
+                    className="delete-btn"
+                    v
+                  >
+                    x
+                  </di>
+                )}
               </div>
             ))}
           </GridLayout>
