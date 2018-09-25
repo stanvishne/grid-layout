@@ -7,13 +7,13 @@ import Home from "./components/Home";
 // import Home from "./LayoutSelector";
 
 import Layout from "./components/Layout";
-import logo from "./logo.svg";
+//import logo from "./logo.svg";
 import "../node_modules/react-grid-layout/css/styles.css";
 import "./App.css";
 
 const store = createStore(
   rootReducer /* preloadedState, */,
-  window.devToolsExtension()
+  window.devToolsExtension ? window.devToolsExtension() : {}
 );
 
 class App extends Component {
@@ -23,8 +23,7 @@ class App extends Component {
         <HashRouter>
           <div className="App">
             <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <h1 className="App-title">Welcome to React!</h1>
+              <h1 className="App-title">React grid layout demo</h1>
             </header>
             <div className="App-main">
               <Route exact path="/" component={Home} />
