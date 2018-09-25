@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+- 8
+install: yarn install
+script: yarn run build
+
+deploy:
+  
+  - provider: pages
+    repo: stanvishne/grid-layout
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: build
+    on:
+      branch: master
+  
+  - provider: yarn
+    email: stanvishne@gmail.com
+    api_key: $NPM_TOKEN
+    on:
+      tags: true
+      repo: stanvishne/locations
