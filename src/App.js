@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { HashRouter as BrowserRouter, Route } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./rootReducers";
@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter>
+        <HashRouter>
           <div className="App">
             <header className="App-header">
               <img src={logo} className="App-logo" alt="logo" />
@@ -31,7 +31,7 @@ class App extends Component {
               <Route exact path="/layout/:id" component={Layout} />
             </div>
           </div>
-        </BrowserRouter>
+        </HashRouter>
       </Provider>
     );
   }
