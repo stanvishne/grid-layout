@@ -19,4 +19,4 @@ deploy:
     api_key: $NPM_TOKEN
     on:
       tags: true
-      repo: stanvishne/locations
+      repo: stanvishne/grid-layout
