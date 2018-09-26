@@ -1,14 +1,17 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import RGL, { WidthProvider } from "react-grid-layout";
+import { layouts } from "./layoutsConstants";
 
 const GridLayout = WidthProvider(RGL);
-let pageLayout = [
+const pageLayout = [
   { i: "0", x: 0, y: 0, w: 6, h: 6, static: true },
   { i: "1", x: 6, y: 0, w: 6, h: 6, static: true },
   { i: "2", x: 0, y: 6, w: 6, h: 6, static: true },
   { i: "3", x: 6, y: 6, w: 6, h: 6, static: true }
 ];
 const style = {
+  padding: "2px",
   border: "1px solid black"
 };
 
@@ -25,8 +28,10 @@ const LayoutDemo = ({ layout }) => (
 );
 
 class LayoutSelector extends React.Component {
+  handleClick = id => {
+    this.props.history.push(`/layout/${id}`);
+  };
   render() {
-    const { layouts, onClick } = this.props;
     return (
       <GridLayout
         compactType="horizontal"
@@ -36,7 +41,7 @@ class LayoutSelector extends React.Component {
       >
         {pageLayout.map((layout, i) => (
           <div
-            onClick={() => onClick(layouts[i], i)}
+            onClick={() => this.handleClick(i)}
             style={style}
             className="layout-demo-div"
             key={layout.i}
@@ -48,4 +53,4 @@ class LayoutSelector extends React.Component {
     );
   }
 }
-export default LayoutSelector;
+export default withRouter(LayoutSelector);
