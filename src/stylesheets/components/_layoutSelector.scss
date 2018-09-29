@@ -1,0 +1,17 @@
+.layout-selector {
+	background-color: 'black';
+	.layout-demo-div {
+		padding: 2px;
+		border: 1px solid black;	
+		box-shadow: 0px 3px 20px -1px rgba(0,0,0,0.26);
+		&:hover {
+		cursor: pointer;
+		background-color: antiquewhite
+		}
+		.layout-demo-item {
+			background-color: lightgoldenrodyellow;
+			border: 1px dotted black;
+		}	  
+	}
+	
+}	

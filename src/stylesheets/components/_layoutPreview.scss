@@ -1,0 +1,26 @@
+.layout-preview {
+	.vertical-panel {  
+		background-color: lightgray;
+		overflow: scroll;
+		padding: 5px;
+		border: 1px solid  lightgray;
+		box-shadow: 7px 9px 11px -1px rgba(0,0,0,0.38);
+	  }
+	.layout {	
+		.layout-element {
+			padding: 10px;
+			border: 1px dashed black;			
+			overflow: hidden;
+			.delete-btn {
+				cursor: pointer;
+				display: none;
+				
+			}
+			&:hover {
+				.delete-btn {
+					display: block;
+				}
+			}
+		  }		  
+	}  
+}

@@ -1,15 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import RGL, { WidthProvider } from "react-grid-layout";
+
 import ComponentsStore from "./componentsStore/ComponentsStore";
+import DeleteBtn from "./DeleteBtn";
 import { mapper } from "./componentsStore/componentsMapper";
-import { layouts } from "./layoutsConstants";
+import { layouts } from "../layoutsConstants";
 
 const GridLayout = WidthProvider(RGL);
 
 let pageLayout = [
-  { i: "p", x: 0, y: 0, w: 2, h: 10, static: true },
-  { i: "l", x: 2, y: 0, w: 10, h: 10, static: true }
+  { i: "p", x: 0, y: 1, w: 2, h: 9, static: true },
+  { i: "l", x: 3, y: 0, w: 8, h: 10, static: true }
 ];
 
 function mapStateToProps({ layout }) {
@@ -20,12 +22,8 @@ class Layout extends React.Component {
   state = {
     arr: []
   };
-  onLayoutChange = layout => {
-    //this.props.onLayoutChange(layout);
-    console.log(layout);
-  };
+
   onDragOver = e => {
-    //let event = e as Event;
     e.stopPropagation();
     e.preventDefault();
   };
@@ -47,10 +45,15 @@ class Layout extends React.Component {
 
   render() {
     const { match } = this.props;
-    const layoutId = match.params.id;
-    const layout = layouts[layoutId];
+    const layout = layouts[match.params.id];
+
     return (
-      <GridLayout layout={pageLayout} cols={12} rowHeight={60}>
+      <GridLayout
+        className="layout-preview"
+        layout={pageLayout}
+        cols={12}
+        rowHeight={60}
+      >
         <div key="p" className="vertical-panel">
           componets store
           <ComponentsStore />
@@ -58,7 +61,6 @@ class Layout extends React.Component {
         <div key="l">
           <GridLayout
             className="layout"
-            onLayoutChange={this.onLayoutChange}
             layout={layout}
             cols={12}
             rowHeight={30}
@@ -74,13 +76,7 @@ class Layout extends React.Component {
               >
                 {this.state.arr[item.i]}
                 {this.state.arr[item.i] && (
-                  <di
-                    onClick={() => this.deleteComponent(item.i)}
-                    className="delete-btn"
-                    v
-                  >
-                    x
-                  </di>
+                  <DeleteBtn onClick={() => this.deleteComponent(item.i)} />
                 )}
               </div>
             ))}
